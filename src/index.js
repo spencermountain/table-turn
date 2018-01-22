@@ -11,7 +11,17 @@ var whichFile = dialog.whichFile
 
 console.log('\n\n     ' + chalk.red('Parse a html-table into json:') + '\n\n')
 
-whichUrl((url) => {
+//allow cli argument, or show dialog
+const getUrl = function(cb) {
+  let url = process.argv[2]
+  if (url) {
+    cb(url)
+  } else {
+    whichUrl(cb)
+  }
+}
+
+getUrl((url) => {
   getHtml(url, (html) => {
     var tables = parseTables(html)
     whichTable(tables, (table) => {

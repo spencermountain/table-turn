@@ -3,10 +3,10 @@ var chalk = require('chalk');
 var join = require("path").join;
 
 var okCool = function() {
-  console.log('\n    ' + chalk.blue('ok cool.') + '\n')
+  console.log('\n\n    ' + chalk.blue('ok cool.') + '\n\n')
 }
 var nice = function() {
-  console.log('\n    ' + chalk.blue('nice.') + '\n')
+  console.log('\n\n    ' + chalk.blue('nice.') + '\n\n')
 }
 
 var whichTable = (tables, cb) => {

@@ -43,7 +43,7 @@ var tables = function(html) {
     var headers = el.find('th').map((_, h) => {
       return trim($(h).text())
     }).toArray()
-    var desc = headers.slice(0, 4).join(', ')
+    var desc = headers.slice(0, 3).join(', ')
     if (desc) {
       desc = `(${desc})`
     }
