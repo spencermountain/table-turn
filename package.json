@@ -1,0 +1,33 @@
+{
+  "name": "table-turn",
+  "version": "0.0.3",
+  "description": "parse a html table into json from cli",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin":{
+    "table-turn":"./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spencermountain/table-parser.git"
+  },
+  "keywords": [
+    "html",
+    "table"
+  ],
+  "author": "spencermountain@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spencermountain/table-parser/issues"
+  },
+  "homepage": "https://github.com/spencermountain/table-parser#readme",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "cheerio": "^1.0.0-rc.2",
+    "inquirer": "^5.0.1",
+    "open": "0.0.5",
+    "superagent": "^3.8.2"
+  }
+}
