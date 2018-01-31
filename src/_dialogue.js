@@ -1,6 +1,7 @@
 var inquirer = require('inquirer');
 var chalk = require('chalk');
 var join = require("path").join;
+var filterCols = require('./_filterCols');
 
 var okCool = function() {
   console.log('\n\n    ' + chalk.blue('ok cool.') + '\n\n')
@@ -10,6 +11,11 @@ var nice = function() {
 }
 
 var whichTable = (tables, cb) => {
+  //assume it, if only one
+  if (tables.length <= 1) {
+    return cb(tables[0])
+  }
+  //ask otherwise
   inquirer
     .prompt([{
       type: 'list',
@@ -87,8 +93,7 @@ var whichColumns = (table, cb) => {
       }
     ])
     .then(answers => {
-      var columns = answers.columns
-      console.log(JSON.stringify(columns, null, '  '));
+      table = filterCols(table, answers.columns)
       cb(table)
     });
 }
