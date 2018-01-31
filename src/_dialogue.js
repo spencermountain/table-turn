@@ -65,8 +65,37 @@ var whichFile = (cb) => {
     });
 }
 
+var whichColumns = (table, cb) => {
+  inquirer
+    .prompt([
+      {
+        type: 'checkbox',
+        message: 'which columns to include?',
+        name: 'columns',
+        choices: table.headers.map(c => {
+          return {
+            name: c,
+            checked: true
+          }
+        }),
+        validate: function(answer) {
+          if (answer.length < 1) {
+            return 'You must choose at least one column.';
+          }
+          return true;
+        }
+      }
+    ])
+    .then(answers => {
+      var columns = answers.columns
+      console.log(JSON.stringify(columns, null, '  '));
+      cb(table)
+    });
+}
+
 module.exports = {
   whichTable: whichTable,
   whichUrl: whichUrl,
   whichFile: whichFile,
+  whichColumns: whichColumns
 }

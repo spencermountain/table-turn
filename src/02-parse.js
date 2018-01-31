@@ -33,6 +33,7 @@ var tables = function(html) {
     el = cleanup(el)
     var table = {
       desc: '',
+      headers: [],
       data: []
     }
     //get rows
@@ -43,6 +44,8 @@ var tables = function(html) {
     var headers = el.find('th').map((_, h) => {
       return trim($(h).text())
     }).toArray()
+    table.headers = headers
+
     var desc = headers.slice(0, 3).join(', ')
     if (desc) {
       desc = `(${desc})`
