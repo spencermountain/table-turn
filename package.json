@@ -1,6 +1,6 @@
 {
   "name": "table-turn",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "parse a html table into json from cli",
   "main": "./src/index.js",
   "scripts": {
