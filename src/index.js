@@ -26,9 +26,9 @@ getUrl((url) => {
   getHtml(url, (html) => {
     var tables = parseTables(html)
     whichTable(tables, (table) => {
-      whichColumns(table, (table) => {
+      whichColumns(table, (t) => {
         whichFile((file) => {
-          fs.writeFileSync(file, JSON.stringify(table.data, null, 2))
+          fs.writeFileSync(file, JSON.stringify(t.data, null, 2))
           console.log('done!')
           open(file)
         })

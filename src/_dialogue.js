@@ -11,12 +11,17 @@ var nice = function() {
 }
 
 var whichTable = (tables, cb) => {
+  if (!tables || tables.length === 0) {
+    console.log(chalk.yellow('\n\n   no html tables found on page!'))
+    console.log('\n sorry.')
+    process.exit()
+  }
   //assume it, if only one
   if (tables.length <= 1) {
     return cb(tables[0])
   }
   //ask otherwise
-  inquirer
+  return inquirer
     .prompt([{
       type: 'list',
       name: 'table',
@@ -25,8 +30,8 @@ var whichTable = (tables, cb) => {
     }])
     .then(answers => {
       nice()
-      var table = tables.find(t => t.desc = answers.table)
-      cb(table)
+      var table = tables.find(t => t.desc === answers.table)
+      return cb(table)
     });
 }
 
@@ -48,10 +53,10 @@ var whichUrl = (cb) => {
 
 
 function expandPath(path) {
-  var homedir = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+  var homedir = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
   if (!path) return path;
-  if (path == '~') return homedir;
-  if (path.slice(0, 2) != '~/') return path;
+  if (path === '~') return homedir;
+  if (path.slice(0, 2) !== '~/') return path;
   return join(homedir, path.slice(2));
 }
 
